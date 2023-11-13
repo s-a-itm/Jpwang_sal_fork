@@ -2,31 +2,31 @@
 	{
 		"model": "Pokeball",
 		"price": 99.99,
-		"image": "pokeball.png",
+		"image": "./images/pokeball.jpg",
 		"qty_available": 12
 	},
 	{
 		"model": "Greatball",
 		"price": 299.99,
-		"image": "greatball image",
+		"image": "./images/greatball.jpg",
 		"qty_available": 9
 	},
     {
 		"model": "Ultraball",
 		"price": 499.99,
-		"image": "ultraball image",
+		"image": "",
 		"qty_available": 5
 	},
     {
 		"model": "Quickball",
 		"price": 599.99,
-		"image": "quickball image",
+		"image": "./images/quickball.jpg",
 		"qty_available": 7
 	},
     {
-		"model": "Loveball",
+		"model": "Healball",
 		"price": 399.99,
-		"image": "loveball image",
+		"image": "./images/healball.jpg",
 		"qty_available": 7
 	}
 ]
