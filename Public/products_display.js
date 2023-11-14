@@ -1,4 +1,4 @@
-//set up params from headder, order array, and error value
+//params for url, error, and order
 let params = (new URL(document.location)).searchParams;
 let error;
 let order = [];
@@ -13,21 +13,21 @@ params.forEach((value,key) => {
         }
 });
 
-//if there is an error submitted, then show the error text in errorDiv
+//if there is an error, show the error above text 
 if(error == 'true'){
     
     document.getElementById('errorDiv').innerHTML += `<h2 class="text-danger">Input Error - Please Fix!</h2><br>`;
 }
 
 /*
-For every product in the array:
-    Create a model with the image on top
-    Fill the model body with the title of the model found in products[i], so with price, aval, and total sold
+For each item in the selection:
+    Model the image by placing it above
+    Enter the model's title, price, availability, and total sold in the model body located in products[i].
 
-    Create an input that oninput validates the quantity, a placeholder value of 0 
-        The initial value found in the box can be populated if there is anything but 0 or undefined in order array for that position
-    Create an area to define errors
-    Run the validation to populate errors just incase an initial value is passed
+   Make an input with a placeholder value of 0 so that when entered, it validates the quantity.
+        If the order array for that slot contains anything other than 0 or undefined, the initial value shown in the box can be filled in.
+    Make a space for errors to be defined.
+    Execute the validation process to add errors in case the initial value is accepted.
 */
 for (let i = 0; i < products.length; i++) {
     document.querySelector('.row').innerHTML += 
@@ -52,16 +52,16 @@ for (let i = 0; i < products.length; i++) {
         validateQuantity(document.getElementById(`${[i]}`));
  ;}
 
-//runs to generate a validation message
+//generate validation message
     function validateQuantity(quantity){
-        //set variables, and grab number from the quantity and set it to an number
+        //Determine the variables, then take the number from the quantity and assign it to a number.
         let valMessage = '';
         let quantityNumber = Number(quantity.value);
         //console.log(Number.isInteger(quantityNumber));
         document.getElementById(`invalidQuantity${quantity.id}`).innerHTML = "validationMessage";
         //console.log(products[quantity.id]['qty_available']);
-        //gets validation message if not a number, negative, not an integer, or if there is not enough items in stock
-        //else  empty string 
+        //obtains a message of validation if it's negative, not an integer, not a number, or there aren't enough things in inventory
+        //else empty string 
         if(isNaN(quantityNumber)){
             valMessage = "Please Enter a Number";
         }else if (quantityNumber<0 && !Number.isInteger(quantityNumber)){

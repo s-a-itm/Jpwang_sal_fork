@@ -1,4 +1,4 @@
-//Aaron Kim
+//Justin Wang
 // Importing the Express.js framework 
 const express = require('express');
 // Create an instance of the Express application called "app"
@@ -7,10 +7,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
-//grabs everything from public
+//retrieves information from public
 app.use(express.static(__dirname + '/public'));
 
-//sets up the product array from the json file
+//input the product array from the json file
 let products = require(__dirname + '/products.json');
 products.forEach( (prod,i) => {prod.total_sold = 0});
 
@@ -23,7 +23,7 @@ app.get("/products.js", function (request, response, next) {
 });
 
 
-//whenever a post with proccess form is recieved
+//post for process form is recieved
 app.post("/process_form", function (request, response) {
 
     //get the textbox inputs in an array
@@ -93,7 +93,7 @@ app.post("/process_form", function (request, response) {
     }
  });
 
-// Route all other GET requests to serve static files from a directory named "public"
+// Route all other GET requests to files from the public directory
 
 app.all('*', function (request, response, next) {
     //console.log(request.method + ' to ' + request.path);
@@ -103,8 +103,8 @@ app.all('*', function (request, response, next) {
 // Start the server; listen on port 8080 for incoming HTTP requests
 app.listen(8080, () => console.log(`listening on port 8080`));
 
-//function to validate the quantity, returns a string if not a number, negative, not an integer, or a combination of both
-//if no errors in quantity, returns empty string
+//function to verify the amount; returns a string if it's not an integer, a negative number, or a combination of the two.
+//if no errors in quantity, then it will return in empty string
 function validateQuantity(quantity){
     //console.log(quantity);
     if(isNaN(quantity)){

@@ -1,6 +1,6 @@
 
 .custom-gray-bg {
-    background-color: rgb(158, 66, 66); 
+    background-color: rgb(233, 118, 118); 
   }
   
   .btn-outline-primary {
@@ -25,7 +25,16 @@ h1 {
 p{
     color: black;
     font-style: oblique;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+img{
+  height: 300px;
+  width: 300px;
+}
+
+.container{
+  text-align: center;
 }
 
   .container img {

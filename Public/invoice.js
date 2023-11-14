@@ -5,20 +5,16 @@ let subtotal = 0;
 let taxAmount = 0;
 let shipping = 0;
 
-//opens the url params
+//Allows access to the url
 let params = (new URL(document.location)).searchParams;
         //initializes empty order array
         let order = [];
-        //for each prod, push the value to the array
+        //pushes value to array per product
         params.forEach((value,key) => {
             if (key.startsWith('prod')) {
                     order.push(parseInt(value));
                 }
         });
-
-        
-
-        //console.log(order);
         
         
 //generates all the item rows
@@ -42,19 +38,19 @@ else{
     shipping = subtotal*.05;
 }
 
-//calculates total
+//calculating the total
 let total = tax+subtotal+shipping;
 
 
-//insert footer row 
+//inserts footer row 
 document.getElementById("subtotal_cell").innerHTML = "$" + subtotal.toFixed(2);
 document.getElementById("tax_cell").innerHTML = "$" + tax.toFixed(2);
 document.getElementById("shipping_cell").innerHTML = "$"+shipping.toFixed(2);
 document.getElementById("total_cell").innerHTML = "$"+total.toFixed(2);
 
 
-//function to validate the quantity, returns a string if not a number, negative, not an integer, or a combination of both
-//if no errors in quantity, returns empty string
+//function for amount verification; returns a string if the value is not an integer, a negative number, or both.
+//empty string if no errors in quantity
 function validateQuantity(quantity){
     if(isNaN(quantity)){
         return "Please Enter a Number";
@@ -75,7 +71,7 @@ function generateItemRows(){
     //sets table to the invoice table on the html
     let table = document.getElementById("invoiceTable");
 
-    //checks if it has errors, set it to no for now
+    //checks if it has errors, set false temporarily
     let hasErrors = false; 
 
     //for each member of the array
@@ -96,13 +92,13 @@ function generateItemRows(){
             row.insertCell(0).insertHTML = item.model;
             row.insertCell(1).innerHTML = validationMessage;
         } 
-        //otherwise, lets create the row in the invoice and update the extended price and subtotal
+        //else if, creates the row in the invoice and update the extended price with subtotal
         else if(itemQuantity >0){
             //update the variables
             extendedPrice = item.price * itemQuantity;
             subtotal += extendedPrice;
 
-            //create a new row and insert the info
+            //create a new row and with info
             let row = table.insertRow();
             row.insertCell(0).innerHTML = `<img src="${item.image}" class="img-small" name = "img">`;
             row.insertCell(1).innerHTML = item.model;
