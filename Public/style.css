@@ -29,8 +29,8 @@ p{
 }
 
 img{
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
 }
 
 .container{
@@ -38,6 +38,7 @@ img{
 }
 
   .container img {
-  /*  /object-fit: contain;/ */
     object-fit: cover; 
+    height: 300;
+    width: 300;
   }

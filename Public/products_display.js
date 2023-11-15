@@ -63,20 +63,20 @@ for (let i = 0; i < products.length; i++) {
         //obtains a message of validation if it's negative, not an integer, not a number, or there aren't enough things in inventory
         //else empty string 
         if(isNaN(quantityNumber)){
-            valMessage = "Please Enter a Number";
+            valMessage = "Please enter valid number";
         }else if (quantityNumber<0 && !Number.isInteger(quantityNumber)){
-            valMessage = "Please Enter a Positive Integer";
+            valMessage = "Please enter a Positive Integer";
         }else if (quantityNumber <0){
-            valMessage = "Please Enter a Positive Value";
+            valMessage = "Please enter a Positive Value";
         }else if(!Number.isInteger(quantityNumber)){
-            valMessage = "Please Enter an Integer";
+            valMessage = "Please enter an Integer";
         }else if(quantityNumber > products[quantity.id]['qty_available']){
-            valMessage = "Not Enough Items in Stock!";
+            valMessage = "Not enough items in Stock!";
         }
         else{
             valMessage = '';
         }
-        //set the valMessage to the innerHTML to the section
+        //set valMessage to the innerHTML to the section
         document.getElementById(`invalidQuantity${quantity.id}`).innerHTML = valMessage;
         //console.log(products[quantity.id])
     } 
