@@ -37,7 +37,7 @@ app.post("/process_form", function (request, response) {
     //for each member of qtys
     for (i in qtys) {
         
-        //set q as the number
+        //set q for number
         let q = Number(qtys[i]);
         
         //console.log(validateQuantity(q));
