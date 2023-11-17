@@ -8,7 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 //retrieves information from public
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/Public'));
 
 //input the product array from the json file
 let products = require(__dirname + '/products.json');
@@ -100,10 +100,8 @@ app.all('*', function (request, response, next) {
     next();
  });
 
-// Start the server; listen on port 8080 for incoming HTTP requests
-app.listen(8080, () => console.log(`listening on port 8080`));
 
-//function to verify the amount; returns a string if it's not an integer, a negative number, or a combination of the two.
+ //function to verify the amount; returns a string if it's not an integer, a negative number, or a combination of the two.
 //if no errors in quantity, then it will return in empty string
 function validateQuantity(quantity){
     //console.log(quantity);
@@ -120,3 +118,6 @@ function validateQuantity(quantity){
     }
 
 }
+
+// Start the server; listen on port 8080 for incoming HTTP requests
+app.listen(8080, () => console.log(`listening on port 8080`));
